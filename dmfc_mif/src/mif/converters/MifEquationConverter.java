@@ -38,12 +38,12 @@ public class MifEquationConverter {
 		String[][] map = new String[][] {
 				{"&", "&amp;"},
 				{"\\>", "&gt;"},
-				{"\\x81 ", "Å"},
-				{"\\x80 ", "Ä"},
-				{"\\x85 ", "Ö"},
-				{"\\x8c ", "å"},
-				{"\\x8a ", "ä"},
-				{"\\x9a ", "ö"},
+				{"\\x81 ", "ï¿½"},
+				{"\\x80 ", "ï¿½"},
+				{"\\x85 ", "ï¿½"},
+				{"\\x8c ", "ï¿½"},
+				{"\\x8a ", "ï¿½"},
+				{"\\x9a ", "ï¿½"},
 				{"\\xd3 ", "&quot;"},
 				{">", "&gt;"},
 				{"<", "&lt;"},
@@ -169,7 +169,7 @@ public class MifEquationConverter {
 		}
 		// Index, chem & tensor
 		else if (opname.equals("indexes")) {
-			// Alla exempel i Miff reference är testade.
+			// Alla exempel i Miff reference ï¿½r testade.
 			tmp = "<"+NS+"mmultiscripts>";
 			int sup = Integer.parseInt((String)(param.elementAt(0)));
 			int sub = Integer.parseInt((String)(param.elementAt(1)));
@@ -190,7 +190,7 @@ public class MifEquationConverter {
 			return tmp;			
 		}
 		else if (opname.equals("chem")) {
-			// Alla exempel i Miff reference är testade.
+			// Alla exempel i Miff reference ï¿½r testade.
 			tmp = "<"+NS+"mmultiscripts>";
 			int psub = Integer.parseInt((String)(param.elementAt(0)));
 			int sub = Integer.parseInt((String)(param.elementAt(1)));
@@ -210,7 +210,7 @@ public class MifEquationConverter {
 			return tmp;				
 		}
 		else if (opname.equals("tensor")) {
-			// Alla exempel i Miff reference är testade.
+			// Alla exempel i Miff reference ï¿½r testade.
 			tmp = "<"+NS+"mmultiscripts>";
 			int pos = Integer.parseInt((String)(param.elementAt(0)));
 			int len = param.size()-2;
@@ -275,7 +275,7 @@ public class MifEquationConverter {
 				case ',':
 					if (open<1) {
 						String tmp = inp.substring(last,i);
-						if (tmp.indexOf('[')!=-1) { //icke-atomärt argument
+						if (tmp.indexOf('[')!=-1) { //icke-atomï¿½rt argument
 							tmp = toMathML(tmp);
 						}
 						param.add(tmp);

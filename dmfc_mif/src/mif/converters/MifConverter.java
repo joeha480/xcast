@@ -17,7 +17,7 @@ import mif.utils.Node;
 /**
  * ... beskrivning ...
  * 
- * @author  Joel Håkansson, TPB
+ * @author  Joel Hï¿½kansson, TPB
  * @version 2005-feb-16
  * @see 
  * @since 1.0
@@ -57,7 +57,7 @@ public class MifConverter {
 			ps.close();
 			System.out.println("   Transforming XML...");
 			//Transform
-		} catch (Exception e) { System.err.println("Error"); }
+		} catch (Exception e) { e.printStackTrace(); }
 		return true;
 	}
 	
@@ -89,7 +89,7 @@ public class MifConverter {
 			convertFile(mifTree, output);
 			if (!SILENT_MODE) System.out.println(MESS_DONE_PARSING.format(new Object[]{miftype, input.getName()}));
 		} else if (miftype.equals("Book")) {
-			convertFile(mifTree, output); // spara bok-xml också...
+			convertFile(mifTree, output); // spara bok-xml ocksÃ¥...
 			MifConverter mc = new MifConverter(xslt, encoding);
 			Node tmp = mifTree.getNextChild("BookComponent");
 			if (!SILENT_MODE) System.out.println(MESS_DONE_PARSING.format(new Object[]{miftype, input.getName()}));

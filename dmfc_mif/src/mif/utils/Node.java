@@ -2,6 +2,7 @@
 package mif.utils;
 import java.io.PrintStream;
 import java.util.Vector;
+import mif.converters.MifUnescape;
 
 /**
  * beskrivning
@@ -13,41 +14,13 @@ import java.util.Vector;
 public class Node {
 	public final static int TYPE_NODE = 0;
 	public final static int TYPE_LEAF = 1;
-	public final static String[][] map = new String[][] {
+	public final static String[][] XML_ESCAPES = new String[][] {
+			// XML Escape
 			{"&", "&amp;"},
-			
-			// Mif Escape chars (Mif Reference p. 7)
-			{"\\t", "\t"},
-			{"\\>", "&gt;"},
-			{"\\q", "'"},
-			{"\\Q", "`"},
-			{"\\\\", "\\"},
-			
-			// Mif Hex repr (FrameMaker Character Sets)
-			{"", ""},
-			{"", ""},
-			{"", ""},
-			{"", ""},
-			{"", ""},
-			{"", ""},
-			{"", ""},
-			{"", ""},
-			{"\\x81 ", "Å"},
-			{"\\x80 ", "Ä"},
-			{"\\x85 ", "Ö"},
-			{"\\x8c ", "å"},
-			{"\\x8a ", "ä"},
-			{"\\x9a ", "ö"},
-			{"\\xd3 ", "&quot;"},
-			{"\\x14 ", ""},
-			{"\\xa9 ", "\u00a9"},
-			{"\\xb0 ", "\u00b0"},
-			{"\\xd7 ", "\u00d7"},
 			{">", "&gt;"},
 			{"<", "&lt;"},
 			{"\"", "&quot;"}
-			};
-
+	};
 	
 	private Vector children;
 	private String name;
@@ -77,7 +50,7 @@ public class Node {
 		//System.out.println(((Node[])(v.toArray())).getClass());
 		try {
 			Object[] tmp = v.toArray();
-			boolean isNode = v.elementAt(0).getClass()==Class.forName("tpb.utils.Node");
+			boolean isNode = v.elementAt(0).getClass()==Class.forName("mif.utils.Node");
 			if (isNode) {
 				Node[] nodeArray = new Node[tmp.length];
 				//System.out.println("begin");
@@ -332,19 +305,16 @@ public class Node {
 		}
 	}
 	
-	public void printAll() {
-		printAll(0);
+	private String escapeXML(String input) {
+		String output = input;
+		for (int i=0; i<XML_ESCAPES.length; i++){
+			output = output.replace(XML_ESCAPES[i][0], XML_ESCAPES[i][1]);
+		}
+		return output;
 	}
 	
-	public String bulkReplace(String in, String[][] map)
-	{
-		for (int i=0; i<map.length; i++){
-			in = in.replace(map[i][0], map[i][1]);
-			//in = in.replaceAll(find[i],replace[i]);
-		}
-		int ind = in.indexOf("AAA");
-		if (ind > 0) { System.out.println(in.codePointBefore(ind) + ' ' + in.codePointBefore(ind)); }
-		return in;
+	public void printAll() {
+		printAll(0);
 	}
 	
 	private void printAllToXML(int level, PrintStream ps) {
@@ -373,7 +343,9 @@ public class Node {
 					ps.print("</MathFullForm>");
 				} else {
 					//ps.print(" attr" + (i+1) + "=\"" + ((String)(tmp[i])).replaceAll("&","&amp;").replaceAll(">","&gt;").replaceAll("<","&lt;").replaceAll("\"", "&quot;") + '"');
-					ps.print(" attr" + (i+1) + "=\"" + bulkReplace((String)(tmp[i]), map) + '"');
+					ps.print(" attr" + (i+1) + "=\"" + 
+							escapeXML(MifUnescape.unescape((String)(tmp[i]), 
+									MifUnescape.WINDOWS_STANDARD)) + '"');
 				}
 
 			}

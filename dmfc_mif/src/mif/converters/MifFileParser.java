@@ -91,7 +91,7 @@ public class MifFileParser {
 					current += token;
 				}
 			} else {
-				if (token == '\n') mode = NO_MODE; // för inset
+				if (token == '\n') mode = NO_MODE; // fÃ¶r inset
 				
 				if (mode == NO_MODE & token == '&') mode = COMMENT_MODE; // sortera bort inset
 				else if (mode == NO_MODE & token == '=') mode = COMMENT_MODE; // sortera bort inset
