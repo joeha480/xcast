@@ -2,6 +2,10 @@
 package mif;
 import java.io.File;
 
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+
 import mif.converters.MifConverter;
 
 /**
@@ -16,7 +20,7 @@ public class Mif2XML {
 		String infile = "";
 		String outfile = "";
 		String encoding = "UTF-8";
-		String xslt = "";
+		String xslt = "./xslt/mif2xhtml.xsl";
 		if (args.length >= 1 & args.length <= 3) {
 			infile = args[0];
 		}
@@ -45,6 +49,12 @@ public class Mif2XML {
 		MifConverter mc = new MifConverter();
 		try {
 			mc.convert(new File(infile), new File(outfile));
+		/*	StreamSource xmlSource = new StreamSource(new File(outfile));
+			StreamSource xsltSource = new StreamSource(new File(xslt));			
+			StreamResult xmlResult = new StreamResult(new File(outfile+".html"));
+			javax.xml.transform.Transformer xsltT = TransformerFactory.newInstance().newTransformer(xsltSource);
+            xsltT.getOutputProperties().list(System.out);
+			xsltT.transform(xmlSource, xmlResult);*/
 		} catch (Exception e) {e.printStackTrace();}
 		/*
 		try {

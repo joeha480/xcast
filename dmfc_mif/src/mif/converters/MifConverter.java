@@ -14,10 +14,11 @@ import javax.xml.transform.Transformer;
 
 import mif.utils.Node;
 
+
 /**
  * ... beskrivning ...
  * 
- * @author  Joel H�kansson, TPB
+ * @author  Joel Håkansson, TPB
  * @version 2005-feb-16
  * @see 
  * @since 1.0
@@ -95,7 +96,7 @@ public class MifConverter {
 			if (!SILENT_MODE) System.out.println(MESS_DONE_PARSING.format(new Object[]{miftype, input.getName()}));
 			while (tmp!=null) {
 				String filename = tmp.getFirstChild("FileName").getFirstAttribute();
-				filename = unescapeFileName(filename);
+				filename = MifUnescape.unescape(unescapeFileName(filename),MifUnescape.WINDOWS_STANDARD);
 				String next = new String(getPath(input)+filename).replace(" ", "_")+".mif";
 				if (!SILENT_MODE) System.out.println(MESS_PROCESSING.format(new Object[]{next}));
 				mc.convert(new File(next), new File(next+".xml"));
