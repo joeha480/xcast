@@ -54,6 +54,7 @@ public class MifConverter {
 			System.out.println("   Saving as XML...");
 			PrintStream ps = new PrintStream(output, encoding);
 			ps.println("<?xml version=\"1.0\" encoding=\""+encoding+"\"?>");
+			ps.println("<!-- Generated with MIF2XML Version 2005-03-09 09:09 -->");
 			mifTree.printAllToXML(ps);
 			ps.close();
 			System.out.println("   Transforming XML...");
