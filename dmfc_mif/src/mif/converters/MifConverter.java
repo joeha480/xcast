@@ -12,6 +12,8 @@ import java.text.MessageFormat;
 
 import javax.xml.transform.Transformer;
 
+import com.sun.org.omg.CORBA.ExceptionDescription;
+
 import mif.utils.Node;
 
 
@@ -54,7 +56,7 @@ public class MifConverter {
 			System.out.println("   Saving as XML...");
 			PrintStream ps = new PrintStream(output, encoding);
 			ps.println("<?xml version=\"1.0\" encoding=\""+encoding+"\"?>");
-			ps.println("<!-- Generated with MIF2XML Version 2005-03-09 09:09 -->");
+			ps.println("<!-- Generated with MIF2XML Version 2005-03-31 14:02 -->");
 			mifTree.printAllToXML(ps);
 			ps.close();
 			System.out.println("   Transforming XML...");
@@ -91,6 +93,25 @@ public class MifConverter {
 			convertFile(mifTree, output);
 			if (!SILENT_MODE) System.out.println(MESS_DONE_PARSING.format(new Object[]{miftype, input.getName()}));
 		} else if (miftype.equals("Book")) {
+			if (!SILENT_MODE) System.out.println("Checking links...");
+			Node tmp2 = mifTree.getNextChild("BookComponent");
+			boolean broken=false;
+			while (tmp2!=null) {
+				String tmpfn = tmp2.getFirstChild("FileName").getFirstAttribute();
+				tmpfn = MifUnescape.unescape(unescapeFileName(tmpfn),MifUnescape.WINDOWS_STANDARD);
+				String tmpnext = new String(getPath(input)+tmpfn).replace(" ", "_")+".mif";
+				if (!(new File(tmpnext).exists())) {
+					broken=true;
+					if (!SILENT_MODE) System.out.println("  * Missing file: " + tmpnext);
+				}
+				tmp2 = mifTree.getNextChild("BookComponent");
+			}
+			if (broken) {
+				throw new Exception("Missing files");
+			} else {
+				if (!SILENT_MODE) System.out.println("-> Links OK!");
+			}
+			mifTree.reset();
 			convertFile(mifTree, output); // spara bok-xml också...
 			MifConverter mc = new MifConverter(xslt, encoding);
 			Node tmp = mifTree.getNextChild("BookComponent");

@@ -43,7 +43,7 @@ public class Mif2XML {
 			System.out.println("         is overwritten.");
 			System.out.println();
 			System.out.println("   Joel Hakansson, TPB");
-			System.out.println("   Version  2004-12-30");
+			System.out.println("   Version 2005-03-31");
 			System.exit(1);
 		}
 		MifConverter mc = new MifConverter();
@@ -55,7 +55,10 @@ public class Mif2XML {
 			javax.xml.transform.Transformer xsltT = TransformerFactory.newInstance().newTransformer(xsltSource);
             xsltT.getOutputProperties().list(System.out);
 			xsltT.transform(xmlSource, xmlResult);*/
-		} catch (Exception e) {e.printStackTrace();}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
 		/*
 		try {
 			MifFileParser mifFile = new MifFileParser(args[0]);

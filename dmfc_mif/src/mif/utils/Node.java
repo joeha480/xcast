@@ -8,7 +8,7 @@ import mif.converters.MifUnescape;
  * beskrivning
  * 
  * @author  Joel Hakansson, TPB
- * @version 2004-dec-30
+ * @version 2005-03-31
  * @since 1.0
  */
 public class Node {
@@ -125,7 +125,7 @@ public class Node {
 		return false;
 	}
 	
-	public void Reset() {
+	public void reset() {
 		position = -1;
 	}
 	
