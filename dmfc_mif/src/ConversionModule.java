@@ -17,6 +17,15 @@ public abstract class ConversionModule {
 	}
 	
 	/**
+	 * Call this function to start the execution of the conversion module.
+	 * Each object in the arguments collection contains the name and the value
+	 * of each argument.
+	 * @param args a collection of arguments
+	 * @return true if the conversion module was successful, false otherwise
+	 */
+	public abstract boolean execute(Collection args);
+	
+	/**
 	 * Get user input. This implementation only returns the default value.
 	 * @param messageId the ID of the message (in an external language file)
 	 * @param deafultValue the default value
