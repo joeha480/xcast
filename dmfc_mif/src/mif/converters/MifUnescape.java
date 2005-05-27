@@ -41,6 +41,264 @@ public abstract class MifUnescape {
 			{"q", "'"},
 			{"Q", "`"}
 	};
+	public final static String[] MAP_WINDOWS_STANDARD = new String[] {
+			/*00*/ "",
+			/*01*/ "",
+			/*02*/ "",
+			/*03*/ "",
+			/*04*/ "", //*
+			/*05*/ "", //*
+			/*06*/ "",
+			/*07*/ "",
+			/*08*/ "&#x0009;",
+			/*09*/ "\n", // * forced return
+			/*0a*/ "\n",
+			/*0b*/ "",
+			/*0c*/ "",
+			/*0d*/ "",
+			/*0e*/ "",
+			/*0f*/ "",
+			/*10*/ " ", // * numeric space
+			/*11*/ "\u00a0",
+			/*12*/ " ", // * thin space
+			/*13*/ " ", // * en space
+			/*14*/ " ", // * em space
+			/*15*/ "", //*
+			/*16*/ "",
+			/*17*/ "",
+			/*18*/ "",
+			/*19*/ "",
+			/*1a*/ "",
+			/*1b*/ "",
+			/*1c*/ "",
+			/*1d*/ "",
+			/*1e*/ "",
+			/*1f*/ "",
+			/*20*/ " ", // space
+			/*21*/ "!",
+			/*22*/ "&quot;",
+			/*23*/ "#",
+			/*24*/ "$",
+			/*25*/ "%",
+			/*26*/ "&amp;",
+			/*27*/ "'",
+			/*28*/ "(",
+			/*29*/ ")",
+			/*2a*/ "*",
+			/*2b*/ "+",
+			/*2c*/ ",",
+			/*2d*/ "-",
+			/*2e*/ ".",
+			/*2f*/ "/",
+			/*30*/ "0",
+			/*31*/ "1",
+			/*32*/ "2",
+			/*33*/ "3",
+			/*34*/ "4",
+			/*35*/ "5",
+			/*36*/ "6",
+			/*37*/ "7",
+			/*38*/ "8",
+			/*39*/ "9",
+			/*3a*/ ":",
+			/*3b*/ ";",
+			/*3c*/ "&lt;",
+			/*3d*/ "=",
+			/*3e*/ ">",
+			/*3f*/ "?",
+			/*40*/ "@",
+			/*41*/ "A",
+			/*42*/ "B",
+			/*43*/ "C",
+			/*44*/ "D",
+			/*45*/ "E",
+			/*46*/ "F",
+			/*47*/ "G",
+			/*48*/ "H",
+			/*49*/ "I",
+			/*4a*/ "J",
+			/*4b*/ "K",
+			/*4c*/ "L",
+			/*4d*/ "M",
+			/*4e*/ "N",
+			/*4f*/ "O",
+			/*50*/ "P",
+			/*51*/ "Q",
+			/*52*/ "R",
+			/*53*/ "S",
+			/*54*/ "T",
+			/*55*/ "U",
+			/*56*/ "V",
+			/*57*/ "W",
+			/*58*/ "X",
+			/*59*/ "Y",
+			/*5a*/ "Z",
+			/*5b*/ "[",
+			/*5c*/ "",
+			/*5d*/ "]",
+			/*5e*/ "^",
+			/*5f*/ "_",
+			/*60*/ "`",
+			/*61*/ "a",
+			/*62*/ "b",
+			/*63*/ "c",
+			/*64*/ "d",
+			/*65*/ "e",
+			/*66*/ "f",
+			/*67*/ "g",
+			/*68*/ "h",
+			/*69*/ "i",
+			/*6a*/ "j",
+			/*6b*/ "k",
+			/*6c*/ "l",
+			/*6d*/ "m",
+			/*6e*/ "n",
+			/*6f*/ "o",
+			/*70*/ "p",
+			/*71*/ "q",
+			/*72*/ "r",
+			/*73*/ "s",
+			/*74*/ "t",
+			/*75*/ "u",
+			/*76*/ "v",
+			/*77*/ "w",
+			/*78*/ "x",
+			/*79*/ "y",
+			/*7a*/ "z",
+			/*7b*/ "{",
+			/*7c*/ "|",
+			/*7d*/ "",
+			/*7e*/ "~",
+			/*7f*/ "",
+			/*80*/ "\u00c4",
+			/*81*/ "\u00c5",
+			/*82*/ "\u00c7",
+			/*83*/ "\u00c9",
+			/*84*/ "\u00d1",
+			/*85*/ "\u00d6",
+			/*86*/ "\u00dc",
+			/*87*/ "\u00e1",
+			/*88*/ "\u00e0",
+			/*89*/ "\u00e2",
+			/*8a*/ "\u00e4",
+			/*8b*/ "\u00e3",
+			/*8c*/ "\u00e5",
+			/*8d*/ "\u00e7",
+			/*8e*/ "\u00e9",
+			/*8f*/ "\u00e8",
+			/*90*/ "\u00ea",
+			/*91*/ "\u00eb",
+			/*92*/ "\u00ec",
+			/*93*/ "\u00ed",
+			/*94*/ "\u00ee",
+			/*95*/ "\u00ef",
+			/*96*/ "\u00f1",
+			/*97*/ "\u00f3",
+			/*98*/ "\u00f2",
+			/*99*/ "\u00f4",
+			/*9a*/ "\u00f6",
+			/*9b*/ "\u00f5",
+			/*9c*/ "\u00fa",
+			/*9d*/ "\u00f9",
+			/*9e*/ "\u00fb",
+			/*9f*/ "\u00fc",
+			/*a0*/ "", //*
+			/*a1*/ "",
+			/*a2*/ "\u00a2",
+			/*a3*/ "\u00a3",
+			/*a4*/ "\u00a7",
+			/*a5*/ "\u2022", 
+			/*a6*/ "\u00b6",
+			/*a7*/ "\u00df",
+			/*a8*/ "\u00ae",
+			/*a9*/ "\u00a9",
+			/*aa*/ "", //*
+			/*ab*/ "\u00b4",
+			/*ac*/ "\u00a8",
+			/*ad*/ "\u00a6",
+			/*ae*/ "\u00c6",
+			/*af*/ "\u00d8",
+			/*b0*/ "\u00d7",
+			/*b1*/ "\u00b1",
+			/*b2*/ "\u00f0",
+			/*b3*/ "", //*
+			/*b4*/ "\u00a5",
+			/*b5*/ "\u00b5",
+			/*b6*/ "\u00b9",
+			/*b7*/ "\u00b2",
+			/*b8*/ "\u00b3",
+			/*b9*/ "\u00bc",
+			/*ba*/ "\u00bd",
+			/*bb*/ "\u00aa",
+			/*bc*/ "\u00ba",
+			/*bd*/ "\u00be",
+			/*be*/ "\u00e6",
+			/*bf*/ "\u00f8",
+			/*c0*/ "\u00bf",
+			/*c1*/ "\u00a1",
+			/*c2*/ "\u00ac",
+			/*c3*/ "\u00d0",
+			/*c4*/ "f", // florin
+			/*c5*/ "\u00dd",
+			/*c6*/ "\u00fd",
+			/*c7*/ "\"", // guillemetleft (much less than <<) \u00ab
+			/*c8*/ "\"", // guillemetright (much more than >>) \u00bb
+			/*c9*/ "...", // * ellipsis
+			/*ca*/ "\u00fe",
+			/*cb*/ "\u00c0",
+			/*cc*/ "\u00c3",
+			/*cd*/ "\u00d5",
+			/*ce*/ "OE", // OE
+			/*cf*/ "oe", // oe
+			/*d0*/ "-", // * endash
+			/*d1*/ "-", // * emdash
+			/*d2*/ "&quot;", // * quotedblleft
+			/*d3*/ "&quot;", // * quotedblright
+			/*d4*/ "'", // * quoteleft
+			/*d5*/ "'", // * quoteright
+			/*d6*/ "\u00f7",
+			/*d7*/ "\u00de",
+			/*d8*/ "\u00ff",
+			/*d9*/ "\u0178",
+			/*da*/ "/",
+			/*db*/ "\u00a4",
+			/*dc*/ "'", // * guilsinglleft <
+			/*dd*/ "'", // * guilsinglright >
+			/*de*/ "fi", // * fi-ligatur
+			/*df*/ "fl", // * fl-ligatur
+			/*e0*/ "", //*
+			/*e1*/ "\u00b7",
+			/*e2*/ "'", // * quotesinglebase
+			/*e3*/ "&quot;", // * quotedoublebase
+			/*e4*/ "", //*
+			/*e5*/ "\u00c2",
+			/*e6*/ "\u00ca",
+			/*e7*/ "\u00c1",
+			/*e8*/ "\u00cb",
+			/*e9*/ "\u00c8",
+			/*ea*/ "\u00cd",
+			/*eb*/ "\u00ce",
+			/*ec*/ "\u00cf",
+			/*ed*/ "\u00cc",
+			/*ee*/ "\u00d3",
+			/*ef*/ "\u00d4",
+			/*f0*/ "", //*
+			/*f1*/ "\u00d2",
+			/*f2*/ "\u00da",
+			/*f3*/ "\u00db",
+			/*f4*/ "\u00d9",
+			/*f5*/ "", //*
+			/*f6*/ "^",
+			/*f7*/ "~",
+			/*f8*/ "\u00af",
+			/*f9*/ "", //*
+			/*fa*/ "", //*
+			/*fb*/ "\u00b0",
+			/*fc*/ "\u00b8",
+			/*fd*/ "", //*
+			/*fe*/ "", //*
+			/*ff*/ ""
+			};
 	
 	public final static String[][] WINDOWS_STANDARD_MAP = new String[][] {			
 			// Mif Hex repr (FrameMaker Character Sets)
@@ -283,12 +541,17 @@ public abstract class MifUnescape {
 			};
 	
 	private static String doIt(String input, String[][] map, int mapLen) {
-		String[] tmp = input.split("\\\\");
-		String output = tmp[0];
+		if (input.length()==0) {return "";}
+		String[] tmp = input.split("(?<!\\\\)\\\\"); // \\\\ = regex för \
+		StringBuffer output = new StringBuffer(input.length());
+		output.append(tmp[0]);
+		//System.out.println('"'+tmp[0]+'"');
 		for (int i=1; i<tmp.length; i++) {
+			//System.out.println('"'+tmp[i]+'"');
 			if (tmp[i].length()<mapLen) {
 				// We don't have a match, restore...
-				output += "\\" + tmp[i];
+				output.append("\\");
+				output.append(tmp[i]);
 			} else {
 				String str = tmp[i].substring(0,mapLen);
 				int j=0;
@@ -297,14 +560,39 @@ public abstract class MifUnescape {
 				}
 				if (j < map.length) {
 					// We have a match, change...
-					output += map[j][1] + tmp[i].substring(mapLen);
+					output.append(map[j][1]);
+					output.append(tmp[i].substring(mapLen));
 				} else {
 					// We don't have a match, restore...
-					output += "\\" + tmp[i];
+					output.append("\\");
+					output.append(tmp[i]);
 				}
 			}
 		}
-		return output;
+		return output.toString();
+	}
+	
+	/**
+	 * Unescapes the <b>filename</b> string
+	 * @param filename
+	 * @return the unescaped string
+	 */
+	public static String unescapeFileName(String filename) {
+		filename = filename.replace("<r\\>", "");
+		filename = filename.replace("<v\\>", "");
+		filename = filename.replace("<h\\>", "");
+		filename = filename.replace("<c\\>", "/");
+		filename = filename.replace("<u\\>", "../");
+		return filename;
+	}
+	
+	public static String unescapeFileNameFTF(String filename) {
+		filename = filename.replace("<r>", "");
+		filename = filename.replace("<v>", "");
+		filename = filename.replace("<h>", "");
+		filename = filename.replace("<c>", "/");
+		filename = filename.replace("<u>", "../");
+		return filename;
 	}
 	
 	/**

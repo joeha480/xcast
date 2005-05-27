@@ -7,6 +7,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import mif.converters.MifConverter;
+import mif.converters.MifUnescape;
 
 /**
  * @author JOELH
@@ -21,6 +22,11 @@ public class Mif2XML {
 		String outfile = "";
 		String encoding = "UTF-8";
 		String xslt = "./xslt/mif2xhtml.xsl";
+		/*
+		String thestr = "\\x6f \\\\ \\\\\\ \\ \\ \\t \\\\";
+		System.out.println(thestr);
+		System.out.println(MifUnescape.unescape(thestr,MifUnescape.WINDOWS_STANDARD));
+		System.exit(0);*/
 		if (args.length >= 1 & args.length <= 3) {
 			infile = args[0];
 		}

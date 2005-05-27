@@ -7,14 +7,19 @@
 package mif.converters;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.text.MessageFormat;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 
-import com.sun.org.omg.CORBA.ExceptionDescription;
-
 import mif.utils.Node;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 
 /**
@@ -64,15 +69,7 @@ public class MifConverter {
 		} catch (Exception e) { e.printStackTrace(); }
 		return true;
 	}
-	
-	private String unescapeFileName(String filename) {
-		filename = filename.replace("<r\\>", "");
-		filename = filename.replace("<v\\>", "");
-		filename = filename.replace("<h\\>", "");
-		filename = filename.replace("<c\\>", "/");
-		filename = filename.replace("<u\\>", "../");
-		return filename;
-	}
+
 	
 	private String getPath(File input) throws Exception {
 		String path = input.getCanonicalPath();
@@ -85,7 +82,7 @@ public class MifConverter {
 		return path;
 	}
 	
-	public void convert(File input, File output) throws Exception {
+	public void convertF2N(File input, File output) throws Exception {
 		MifFileParser mifFile = new MifFileParser(input);
 		Node mifTree = mifFile.parse("MIFXML");
 		String miftype = mifTree.getFirstChild().getName();
@@ -98,8 +95,9 @@ public class MifConverter {
 			boolean broken=false;
 			while (tmp2!=null) {
 				String tmpfn = tmp2.getFirstChild("FileName").getFirstAttribute();
-				tmpfn = MifUnescape.unescape(unescapeFileName(tmpfn),MifUnescape.WINDOWS_STANDARD);
-				String tmpnext = new String(getPath(input)+tmpfn).replace(" ", "_")+".mif";
+				tmpfn = MifUnescape.unescape(MifUnescape.unescapeFileName(tmpfn),MifUnescape.WINDOWS_STANDARD);
+				//String tmpnext = new String(getPath(input)+tmpfn).replace(" ", "_")+".mif";
+				String tmpnext = getPath(input)+tmpfn+".mif";
 				if (!(new File(tmpnext).exists())) {
 					broken=true;
 					if (!SILENT_MODE) System.out.println("  * Missing file: " + tmpnext);
@@ -107,7 +105,7 @@ public class MifConverter {
 				tmp2 = mifTree.getNextChild("BookComponent");
 			}
 			if (broken) {
-				throw new Exception("Missing files");
+				throw new FileNotFoundException("Missing files");
 			} else {
 				if (!SILENT_MODE) System.out.println("-> Links OK!");
 			}
@@ -118,11 +116,48 @@ public class MifConverter {
 			if (!SILENT_MODE) System.out.println(MESS_DONE_PARSING.format(new Object[]{miftype, input.getName()}));
 			while (tmp!=null) {
 				String filename = tmp.getFirstChild("FileName").getFirstAttribute();
-				filename = MifUnescape.unescape(unescapeFileName(filename),MifUnescape.WINDOWS_STANDARD);
-				String next = new String(getPath(input)+filename).replace(" ", "_")+".mif";
+				filename = MifUnescape.unescape(MifUnescape.unescapeFileName(filename),MifUnescape.WINDOWS_STANDARD);
+				//String next = new String(getPath(input)+filename).replace(" ", "_")+".mif";
+				String next = getPath(input)+filename+".mif";
 				if (!SILENT_MODE) System.out.println(MESS_PROCESSING.format(new Object[]{next}));
-				mc.convert(new File(next), new File(next+".xml"));
+				//mc.convert(new File(next), new File(next+".xml"));
+				MifFileParser.parse(new File(next), new File(next+".xml"));
 				tmp = mifTree.getNextChild("BookComponent");
+			}
+		}
+	}
+	
+	// Ny version, ska vara snabbare och bättre! ;)
+	public void convert(File input, File output) throws Exception {
+		if (!SILENT_MODE) System.out.println(MESS_PROCESSING.format(new Object[]{input}));
+		MifFileParser.parse(input, output);
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document doc = db.parse(output);
+		Element docRoot = doc.getDocumentElement();
+		String rootName = docRoot.getFirstChild().getNodeName();
+		if (rootName.equals("MIFFile")) { // we're done
+			//if (!SILENT_MODE) System.out.println(MESS_DONE_PARSING.format(new Object[]{rootName, input.getName()}));
+		} else if (rootName.equals("Book")) {
+			if (!SILENT_MODE) System.out.println("*  Checking links...");
+			NodeList components = docRoot.getElementsByTagName("BookComponent");
+			File[] nextFile = new File[components.getLength()];
+			boolean broken=false;
+			for (int i=0;i<components.getLength();i++) {
+				String tmpfn = components.item(i).getFirstChild().getAttributes().item(0).getNodeValue(); 
+				tmpfn = MifUnescape.unescapeFileNameFTF(tmpfn);
+				nextFile[i] = new File(getPath(input), tmpfn+".mif");
+				if (!(nextFile[i].exists())) {
+					broken=true;
+					if (!SILENT_MODE) System.out.println("  * Missing file: " + nextFile[i]);
+				}
+			}
+			if (broken) { throw new FileNotFoundException("Missing files");
+			} else { if (!SILENT_MODE) System.out.println("*  Links OK!"); }	
+			//if (!SILENT_MODE) System.out.println(MESS_DONE_PARSING.format(new Object[]{rootName, input.getName()}));
+			for (int i=0;i<components.getLength();i++) {
+				if (!SILENT_MODE) System.out.println(MESS_PROCESSING.format(new Object[]{nextFile[i]}));
+				MifFileParser.parse(nextFile[i], new File(nextFile[i]+".xml"));
 			}
 		}
 	}

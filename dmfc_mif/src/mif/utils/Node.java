@@ -1,7 +1,9 @@
 
 package mif.utils;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Vector;
+
 import mif.converters.MifUnescape;
 
 /**
@@ -22,7 +24,7 @@ public class Node {
 			{"\"", "&quot;"}
 	};
 	
-	private Vector children;
+	private ArrayList children;
 	private String name;
 	private int type;
 	private int position = -1;
@@ -35,7 +37,7 @@ public class Node {
 		initNode(name, children);
 	}
 	
-	public Node(Vector v) {
+	public Node(ArrayList v) {
 		if (v.size()<2) {
 			//System.out.println("The vector should have at least two elements:");
 			//System.out.println("  A name and a value.");
@@ -50,7 +52,7 @@ public class Node {
 		//System.out.println(((Node[])(v.toArray())).getClass());
 		try {
 			Object[] tmp = v.toArray();
-			boolean isNode = v.elementAt(0).getClass()==Class.forName("mif.utils.Node");
+			boolean isNode = v.get(0).getClass()==Class.forName("mif.utils.Node");
 			if (isNode) {
 				Node[] nodeArray = new Node[tmp.length];
 				//System.out.println("begin");
@@ -82,7 +84,7 @@ public class Node {
 	private void initNode(String name, Node[] children) {
 		this.type = TYPE_NODE;
 		this.name = name;
-		this.children = new Vector(children.length);
+		this.children = new ArrayList(children.length);
 		for (int i = 0; i < children.length; i++) {
 			this.children.add(children[i]);
 		}
@@ -91,7 +93,7 @@ public class Node {
 	public void initNode(String name, String[] children) {
 		this.type = TYPE_LEAF;
 		this.name = name;
-		this.children = new Vector(children.length);
+		this.children = new ArrayList(children.length);
 		for (int i = 0; i < children.length; i++) {
 			this.children.add(children[i]);
 		}
@@ -106,18 +108,18 @@ public class Node {
 	}
 	
 	public Node getFirstChild() {
-		if (getType() == TYPE_NODE) return ((Node)(children.elementAt(0)));
+		if (getType() == TYPE_NODE) return ((Node)(children.get(0)));
 		else return null;
 	}
 	
 	public String getFirstAttribute() {
-		if (getType() == TYPE_LEAF) return ((String)(children.elementAt(0)));
+		if (getType() == TYPE_LEAF) return ((String)(children.get(0)));
 		else return null;
 	}
 	public boolean hasAttribute(String attrib) {
 		if (type == TYPE_LEAF) {
 		  for (int i = 0; i < children.size(); i++) {
-			String test = ((String)(children.elementAt(i)));
+			String test = ((String)(children.get(i)));
 			//System.out.println(test);
 			if (attrib.equals(test)) return true;
 		  }
@@ -133,13 +135,13 @@ public class Node {
 		position ++;
 		if (position >= children.size()) return null;
 		if (getType() == TYPE_NODE) {
-			return ((Node)(children.elementAt(position)));		
+			return ((Node)(children.get(position)));		
 		}
 		return null;
 	}
 	
 	public Node getAllChildren(String name) {
-		Vector output = new Vector();
+		ArrayList output = new ArrayList();
 		output.add(name + 's');
 		Object[] tmp = children.toArray();
 		for (int i=0;i<tmp.length;i++) {
@@ -231,10 +233,10 @@ public class Node {
 	}
 	*/
 	
-	public Vector findFirst(String element, String attribute) {
-		Vector res = new Vector();
+	public ArrayList findFirst(String element, String attribute) {
+		ArrayList res = new ArrayList();
 		for (int i = 0; i < children.size(); i++) {
-			Node test = ((Node)(children.elementAt(i)));
+			Node test = ((Node)(children.get(i)));
 			//System.out.println("TESTAR:");
 			//test.printAll();
 			if (test.getType() == TYPE_LEAF) {
@@ -244,24 +246,24 @@ public class Node {
 					return res;
 				}
 			} else if (test.getType() == TYPE_NODE){
-				Vector tmp = test.findFirst(element, attribute);
+				ArrayList tmp = test.findFirst(element, attribute);
 				res.addAll(tmp);
 				//System.out.println("LE:"+res.lastElement());
-				if (((Integer)(res.lastElement())).intValue()>0) {
+				if (((Integer)(res.get(res.size()-1))).intValue()>0) {
 					res.add(new Integer(i+1));
 					return res;
 				}
-				else res.removeElementAt(res.size()-1);
+				else res.remove(res.size()-1);
 			}
 		}
 		res.add(new Integer(-children.size()));
 		return res;
 	}
 	
-	public Node getSubset(Vector subset) {
+	public Node getSubset(ArrayList subset) {
 		if (subset.size()>0) {
 			int childIndex = ((Integer)(subset.remove(subset.size()-1))).intValue() - 1;
-			Node tmp = (Node)(children.elementAt(childIndex));
+			Node tmp = (Node)(children.get(childIndex));
 			return tmp.getSubset(subset);
 		}
 		// else
