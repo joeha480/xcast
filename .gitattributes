@@ -1,1 +1,8 @@
 * text=auto !eol
+XCast/help/index.doc -text
+XCast/saxon.jar -text
+XCast/swt-awt-win32-3062.dll -text
+XCast/swt-awt-win32-3063.dll -text
+XCast/swt-win32-3062.dll -text
+XCast/swt-win32-3063.dll -text
+XCast/workspace/keep.xc -text

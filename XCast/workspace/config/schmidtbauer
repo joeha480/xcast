@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties
+  SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <comment>Settings for file C:\Schmidtbauer\2694 Bok.mif</comment>
+   <entry key="nf8pHelvetica">-bevara</entry>
+   <entry key="Figurtext">caption</entry>
+   <entry key="book">-bevara</entry>
+   <entry key="Tnteckennormal">-platta</entry>
+   <entry key="R1Rubrik1IH">p</entry>
+   <entry key="td">-bevara</entry>
+   <entry key="R2Rubrik2IH">p</entry>
+   <entry key="Tuteckenupphojd">-platta</entry>
+   <entry key="img">-radera</entry>
+   <entry key="Tfteckenfet">-platta</entry>
+   <entry key="Tnteckennedsankt">-platta</entry>
+   <entry key="symbol">-bevara</entry>
+   <entry key="head">-bevara</entry>
+   <entry key="sup">-bevara</entry>
+   <entry key="TTTabelltext">-platta</entry>
+   <entry key="Tkteckenkursiv">-platta</entry>
+   <entry key="B1Brodtext1">p</entry>
+   <entry key="Copyrightforsta">p</entry>
+   <entry key="MathObjectNotIncluded">-bevara</entry>
+   <entry key="table">-bevara</entry>
+   <entry key="Citat">p</entry>
+   <entry key="sub">-bevara</entry>
+   <entry key="Svartrutahoger">sidebar</entry>
+   <entry key="debug">-radera</entry>
+   <entry key="Niva1IX">p</entry>
+   <entry key="bodymatter">-bevara</entry>
+   <entry key="TITabelltitel">caption</entry>
+   <entry key="pagenum">-bevara</entry>
+   <entry key="strong">-bevara</entry>
+   <entry key="BTUBoktitelunderrubrik">doctitle</entry>
+   <entry key="B2Brodtext2">p</entry>
+   <entry key="FtiTextifigur">address</entry>
+   <entry key="FFForfattare">doctitle</entry>
+   <entry key="R1Rubrik1">h1</entry>
+   <entry key="Symbol">-bevara</entry>
+   <entry key="Copyright">p</entry>
+   <entry key="GrupprubrikIX">-bevara</entry>
+   <entry key="BlrHalvblankrad">-radera</entry>
+   <entry key="br">-bevara</entry>
+   <entry key="p">-bevara</entry>
+   <entry key="R2Rubrik2">h2</entry>
+   <entry key="dtbook">-bevara</entry>
+   <entry key="em">-bevara</entry>
+   <entry key="TRTabellrubrik">strong</entry>
+   <entry key="Brodtext">p</entry>
+   <entry key="tr">-bevara</entry>
+   <entry key="R4Rubrik4">h3</entry>
+   <entry key="R1Rubrik1innehall">h1</entry>
+   <entry key="ISBN">epigraph</entry>
+   <entry key="BTBoktitel">doctitle</entry>
+</properties>

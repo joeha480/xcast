@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties
+  SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <comment>Settings for file C:\Documents and Settings\JOELH.TPBAD\Mina dokument\000forskningsintervju.xml</comment>
+   <entry key="tr">-bevara</entry>
+   <entry key="em">-bevara</entry>
+   <entry key="p1">-bevara</entry>
+   <entry key="blockquote">-bevara</entry>
+   <entry key="bodymatter">-bevara</entry>
+   <entry key="head">-bevara</entry>
+   <entry key="dtbook">-bevara</entry>
+   <entry key="h4">-bevara</entry>
+   <entry key="h3">-bevara</entry>
+   <entry key="docauthor">-bevara</entry>
+   <entry key="strong">-bevara</entry>
+   <entry key="h2">caption</entry>
+   <entry key="td">-bevara</entry>
+   <entry key="h1">-bevara</entry>
+   <entry key="doctitle">address</entry>
+   <entry key="book">-bevara</entry>
+   <entry key="li">-bevara</entry>
+   <entry key="pagenum">-bevara</entry>
+   <entry key="p">-bevara</entry>
+   <entry key="warning">-bevara</entry>
+   <entry key="span">-bevara</entry>
+   <entry key="table">-bevara</entry>
+   <entry key="caption">-bevara</entry>
+   <entry key="br">blockquote</entry>
+</properties>

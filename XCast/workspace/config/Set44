@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties
+  SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <comment>Settings for file C:\Documents and Settings\JOELH.TPBAD\Mina dokument\00000 bfa tagged.xml</comment>
+   <entry key="Brödtext">-bevara</entry>
+   <entry key="Story">-bevara</entry>
+   <entry key="Sidnr">-bevara</entry>
+   <entry key="Ruta3_-_Rubrik">-bevara</entry>
+   <entry key="sidebar">-bevara</entry>
+   <entry key="Byline">abbr</entry>
+   <entry key="Lista">-bevara</entry>
+   <entry key="Ruta2_-_Brödtext">-bevara</entry>
+   <entry key="Document">-bevara</entry>
+   <entry key="level1">-bevara</entry>
+   <entry key="Ruta2_-_Ingress">-bevara</entry>
+   <entry key="Ruta_-_Rubrik">-bevara</entry>
+   <entry key="Ruta2_-_Rubrik">imggroup</entry>
+   <entry key="Ruta3_-_Brödtext">link</entry>
+   <entry key="Ruta_-_Brödtext">thead</entry>
+   <entry key="Ingress">address</entry>
+   <entry key="Article">-bevara</entry>
+   <entry key="ImageData">-bevara</entry>
+   <entry key="Ingång">-bevara</entry>
+   <entry key="Rubrik_-_L2">-bevara</entry>
+   <entry key="Rubrik_-_L1">-bevara</entry>
+   <entry key="TaggedPDF-doc">level5</entry>
+   <entry key="img">-bevara</entry>
+</properties>

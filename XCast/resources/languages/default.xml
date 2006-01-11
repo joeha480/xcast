@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties
+  SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <comment>Default language</comment>
+   <entry key="menu_file_item_open">Open...</entry>
+   <entry key="menu_help_item_about">About XML-Cast</entry>
+   <entry key="tab_tree_view_tab_modified">Modified</entry>
+   <entry key="tab_display_view">Display view</entry>
+   <entry key="tab_tree_view">Tree view</entry>
+   <entry key="menu_file_item_exit">Exit</entry>
+   <entry key="menu_file_submenu_import_item_fm">FrameMaker FM</entry>
+   <entry key="menu_help_item_manual">Contents</entry>
+   <entry key="menu_file_item_save">Save</entry>
+   <entry key="menu_edit">Edit</entry>
+   <entry key="tab_log_view">Log view</entry>
+   <entry key="menu_edit_item_view">View</entry>
+   <entry key="menu_file_item_saveas">Save as...</entry>
+   <entry key="menu_help">Help</entry>
+   <entry key="menu_file_submenu_import">Import...</entry>
+   <entry key="dialog_exit">Exit?</entry>
+   <entry key="tab_tree_view_tab_original">Original</entry>
+   <entry key="menu_file_submenu_import_item_mif">FrameMaker MIF</entry>
+   <entry key="menu_file">File</entry>
+   <entry key="dialog_xml_filter_description">xml-files</entry>
+   <entry key="menu_edit_item_view_xml">View XML</entry>
+   <entry key="msg_document_saved">The document has been saved.</entry>
+   <entry key="menu_edit_item_settings">Settings...</entry>
+   <entry key="menu_edit_item_render">Render</entry>
+</properties>

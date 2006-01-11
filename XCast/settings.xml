@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties
+  SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <comment>My settings</comment>
+   <entry key="configDir">config/</entry>
+   <entry key="resources">resources/</entry>
+   <entry key="workspace">workspace/</entry>
+   <entry key="active_application">dtbook/</entry>
+   <entry key="persistent">keep.xc</entry>
+   <entry key="schema">dtbook121.xsd</entry>
+   <entry key="plugins">plugins/</entry>
+   <entry key="language">languages/swedish.xml</entry>
+   <entry key="browser">c:/Program/Internet Explorer/iexplore.exe</entry>
+   <entry key="logging_detail">3</entry>
+   <entry key="editor"/>
+   <entry key="scroll">20</entry>
+</properties>

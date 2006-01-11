@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties
+  SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <comment>Settings for file C:\Documents and Settings\JOELH.TPBAD\Skrivbord\C02615101.fm.xml</comment>
+   <entry key="Row">tr</entry>
+   <entry key="Emphasis">em</entry>
+   <entry key="Graphic">imggroup</entry>
+   <entry key="ChapterToc">list</entry>
+   <entry key="Section[@Type=&#34;AA&#34;]">level2</entry>
+   <entry key="Generic.icon">-radera</entry>
+   <entry key="Lead-in">-bevara</entry>
+   <entry key="Table">table</entry>
+   <entry key="Code.inline">-radera</entry>
+   <entry key="Sidebar">sidebar</entry>
+   <entry key="List">list</entry>
+   <entry key="ChapterToc.item">li</entry>
+   <entry key="Readeraid">sidebar</entry>
+   <entry key="Thead">-platta</entry>
+   <entry key="Section">-bevara</entry>
+   <entry key="Listentry">li</entry>
+   <entry key="Entry">td</entry>
+   <entry key="Para[@Type=&#34;Normal&#34;]">p</entry>
+   <entry key="Title">-bevara</entry>
+   <entry key="Para">-bevara</entry>
+   <entry key="Section[@Type=&#34;BB&#34;]">level3</entry>
+   <entry key="Number">h1</entry>
+   <entry key="Tbody">-platta</entry>
+   <entry key="Linkinfo">img</entry>
+   <entry key="Lead-in[ancestor::List]">hd</entry>
+   <entry key="Table.title">caption</entry>
+   <entry key="Caption">caption</entry>
+   <entry key="Chapter">level1</entry>
+   <entry key="Title[parent::Sidebar]">hd</entry>
+   <entry key="Title[parent::Section[@Type=&#34;AA&#34;]]">h2</entry>
+   <entry key="Url">strong</entry>
+   <entry key="Table.item">-platta</entry>
+   <entry key="Cross.reference.unresolved">strong</entry>
+   <entry key="Image">-radera</entry>
+   <entry key="Title[parent::Chapter]">p</entry>
+   <entry key="Title[parent::Section[@Type=&#34;BB&#34;]]">h3</entry>
+</properties>

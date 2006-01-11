@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties
+  SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <comment>Settings for file D:\Produktion\SIKT\C54175\54175.book.mif</comment>
+   <entry key="xxxxxx">-platta</entry>
+   <entry key="noteref">-bevara</entry>
+   <entry key="book">-bevara</entry>
+   <entry key="R2Rubrik2TOC">li</entry>
+   <entry key="Tnteckennormal">-platta</entry>
+   <entry key="td">-bevara</entry>
+   <entry key="warning">-bevara</entry>
+   <entry key="meta">-bevara</entry>
+   <entry key="img">-bevara</entry>
+   <entry key="Tfteckenfet">-platta</entry>
+   <entry key="BrodtextTitelsidaNysida">p</entry>
+   <entry key="GroupTitlesIX">-bevara</entry>
+   <entry key="R1Rubrik1TOC">li</entry>
+   <entry key="FtnFigurtext">caption</entry>
+   <entry key="R0Rubrik0delrubrikTOC">li</entry>
+   <entry key="head">-bevara</entry>
+   <entry key="R1fRubrik1forfattareTOC">li</entry>
+   <entry key="sup">-bevara</entry>
+   <entry key="TTTabelltext">-platta</entry>
+   <entry key="Tkteckenkursiv">-platta</entry>
+   <entry key="Level1IX">li</entry>
+   <entry key="note">-bevara</entry>
+   <entry key="Copyrightforsta">p</entry>
+   <entry key="table">-bevara</entry>
+   <entry key="R1uRubrik1underrubrik">p</entry>
+   <entry key="PlPunktlistaBrodtext1">li</entry>
+   <entry key="Citat">blockquote</entry>
+   <entry key="debug">-radera</entry>
+   <entry key="B1nollBrodtext1nollptfore">p</entry>
+   <entry key="bodymatter">-bevara</entry>
+   <entry key="Kalla">caption</entry>
+   <entry key="TITabelltitel">-bevara</entry>
+   <entry key="pagenum">-bevara</entry>
+   <entry key="strong">-bevara</entry>
+   <entry key="xx">-platta</entry>
+   <entry key="BTUBoktitelunderrubrik">doctitle</entry>
+   <entry key="Bi1Brodtext1Indrag">p</entry>
+   <entry key="EmbeddedObjectNotIncluded">-radera</entry>
+   <entry key="R1fRubrik1forfattare">author</entry>
+   <entry key="FFForfattare">docauthor</entry>
+   <entry key="R1Rubrik1">h2</entry>
+   <entry key="br">-bevara</entry>
+   <entry key="p">-bevara</entry>
+   <entry key="R2Rubrik2">h3</entry>
+   <entry key="THTabellhuvud">strong</entry>
+   <entry key="R3Rubrik3">h4</entry>
+   <entry key="BrodtextTitelsida">p</entry>
+   <entry key="dtbook">-bevara</entry>
+   <entry key="em">-bevara</entry>
+   <entry key="R3Rubrik3TOC">li</entry>
+   <entry key="tr">-bevara</entry>
+   <entry key="R1Rubrik1innehall">h1</entry>
+   <entry key="R0Rubrik0delrubrik">h1</entry>
+   <entry key="BTBoktitel">doctitle</entry>
+</properties>

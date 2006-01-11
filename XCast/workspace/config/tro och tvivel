@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties
+  SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <comment>Settings for file D:\convtest\tro_och_tvivel\31076.book.mif</comment>
+   <entry key="noteref">-bevara</entry>
+   <entry key="book">-bevara</entry>
+   <entry key="Rn1Rubrik1NumreringTOC">-bevara</entry>
+   <entry key="R2Rubrik2TOC">-bevara</entry>
+   <entry key="td">-bevara</entry>
+   <entry key="Referenser">-bevara</entry>
+   <entry key="Tuteckenupphojd">-platta</entry>
+   <entry key="img">-bevara</entry>
+   <entry key="Tfteckenfet">-bevara</entry>
+   <entry key="BrodtextTitelsidaNysida">-bevara</entry>
+   <entry key="Noter9p">-bevara</entry>
+   <entry key="GroupTitlesIX">-bevara</entry>
+   <entry key="R1Rubrik1TOC">-bevara</entry>
+   <entry key="startrange">-bevara</entry>
+   <entry key="head">-bevara</entry>
+   <entry key="sup">sup</entry>
+   <entry key="Tkteckenkursiv">-platta</entry>
+   <entry key="B1Brodtext1">p</entry>
+   <entry key="Level1IX">-bevara</entry>
+   <entry key="note">-bevara</entry>
+   <entry key="Copyrightforsta">-bevara</entry>
+   <entry key="table">-bevara</entry>
+   <entry key="PlPunktlistaBrodtext1">-bevara</entry>
+   <entry key="Citat">blockquote</entry>
+   <entry key="debug">-radera</entry>
+   <entry key="B1nollBrodtext1nollptfore">p</entry>
+   <entry key="bodymatter">-bevara</entry>
+   <entry key="pagenum">-bevara</entry>
+   <entry key="Citatindrag">-bevara</entry>
+   <entry key="strong">strong</entry>
+   <entry key="BTUBoktitelunderrubrik">doctitle</entry>
+   <entry key="Bi1Brodtext1Indrag">p</entry>
+   <entry key="EmbeddedObjectNotIncluded">-radera</entry>
+   <entry key="FFForfattare">-bevara</entry>
+   <entry key="B1Brodtext1helblrfore">p</entry>
+   <entry key="R1Rubrik1">h1</entry>
+   <entry key="br">-bevara</entry>
+   <entry key="p">-bevara</entry>
+   <entry key="R2Rubrik2">h2</entry>
+   <entry key="Rn1Rubrik1Numrering">h1</entry>
+   <entry key="R3Rubrik3">h3</entry>
+   <entry key="BrodtextTitelsida">-bevara</entry>
+   <entry key="dtbook">-bevara</entry>
+   <entry key="em">-bevara</entry>
+   <entry key="startrenge">-bevara</entry>
+   <entry key="tr">-bevara</entry>
+   <entry key="R4Rubrik4">h4</entry>
+   <entry key="R1Rubrik1innehall">-bevara</entry>
+   <entry key="endrange">-bevara</entry>
+   <entry key="BTBoktitel">doctitle</entry>
+</properties>

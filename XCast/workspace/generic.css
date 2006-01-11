@@ -1,0 +1,97 @@
+
+h1, h2, h3, h4, h5, h6
+{
+  padding-left: 20px;
+}
+
+div
+{
+  font-size: 16px;
+  color: #800000;
+  border-color: #f0e0e0;
+  border-left-color: #800000;
+  border-style: solid;
+  border-width: 1px;
+  border-right-width: 0px;
+  padding: 6px;
+  padding-right: 0px;
+  margin-bottom: 4px;
+}
+
+div.-content
+{
+  border-color: #8000F0;
+  border-style: none;
+  border-width: 0px;
+  padding: 5px;
+  margin-left: 20px;
+}
+
+p, h1, h2, h3, h4, h5, h6, ul, ol, li
+{
+  color: #000000;
+}
+
+div.dtbook, div.head, div.title, div.book, div.frontmatter, div.bodymatter, div.rearmatter, div.level1, div.level2, div.level3, div.level4, div.level5, div.level6, div.docauthor, div.doctitle
+{
+  color: black;
+  border-color: black;
+}
+
+div.docauthor
+{
+  font-size: 400%;
+  text-align: center;
+  border-color: aqua;
+}
+
+div.doctitle
+{
+  font-size: 200%;
+  text-align:center;
+  border-color: aqua;
+}
+
+div.pagenum
+{
+  border-width: 1px;
+  color: #D00000;
+  background-color: yellow;
+  border-color: #D00000;
+}
+
+div.caption 
+{
+  font-size: 100%;
+  text-align: center;
+  border-width: 0px;
+  color: black;
+  background-color: #f0f0f0;
+}
+
+div.note, div.noteref
+{
+  color: green;
+  border-width: 0px;
+}
+
+div.blockquote
+{
+  margin-left: 10%;
+  margin-right: 10%;
+  color: blue;
+  border-width: 0px;
+}
+
+
+table, tr, td {
+  border: solid;
+  border-width: 1px;
+}
+
+span
+{
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000080;
+}

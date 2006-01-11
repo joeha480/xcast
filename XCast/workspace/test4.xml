@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GUISettings>
+	<buttons>
+		<element name="Article">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Brödtext">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Byline">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Document">
+			<default>
+				<value>-bevara</value>
+			</default>
+			<exceptions>
+				<xpath>
+					<expression>self::Document</expression>
+					<value>-bevara</value>
+				</xpath>
+				<xpath>
+					<expression>self::Kroka</expression>
+					<value>-bevara</value>
+				</xpath>
+			</exceptions>
+		</element>
+		<element name="ImageData">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="img">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Ingress">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Ingång">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="level1">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Lista">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Rubrik_-_L1">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Rubrik_-_L2">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Ruta2_-_Brödtext">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Ruta2_-_Ingress">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Ruta2_-_Rubrik">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Ruta3_-_Brödtext">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Ruta3_-_Rubrik">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Ruta_-_Brödtext">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Ruta_-_Rubrik">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="sidebar">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Sidnr">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="Story">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+		<element name="TaggedPDF-doc">
+			<default>
+				<value>-bevara</value>
+			</default>
+		</element>
+	</buttons>
+	<xslts/>
+</GUISettings>

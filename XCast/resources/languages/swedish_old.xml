@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties
+  SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <comment>Default language</comment>
+  <entry key="dialog_exit">Vill du verkligen avsluta?</entry>
+  <entry key="dialog_xml_filter_description">xml-files</entry>
+  <entry key="dialog_load_list_warning">{0} av {1} taggar var inte definerade i filen.</entry>
+  <entry key="menu_edit">Redigera</entry>
+  <entry key="menu_edit_item_render">Rendera</entry>
+  <entry key="menu_edit_item_settings">Inställningar...</entry>
+  <entry key="menu_view">Visa</entry>
+  <entry key="menu_view_item_xhtml">XHTML-vy</entry>
+  <entry key="menu_view_item_xml">XML-vy</entry>
+  <entry key="menu_view_item_tree">Trädvy</entry>
+  <entry key="menu_view_item_log">Logg</entry>
+  <entry key="menu_file">Arkiv</entry>
+  <entry key="menu_file_item_exit">Avsluta</entry>
+  <entry key="menu_file_item_open">Öppna...</entry>
+  <entry key="menu_file_item_save">Spara</entry>
+  <entry key="menu_file_item_saveas">Spara som...</entry>
+  <entry key="menu_file_submenu_import">Importera...</entry>
+  <entry key="menu_file_submenu_import_item_fm">FrameMaker FM</entry>
+  <entry key="menu_file_submenu_import_item_mif">FrameMaker MIF</entry>
+  <entry key="menu_help">Hjälp</entry>
+  <entry key="menu_help_item_about">Om XML-Cast</entry>
+  <entry key="menu_help_item_manual">Innehåll</entry>
+  <entry key="msg_document_saved">Dokumentet har sparats.</entry>
+  <entry key="msg_warning">Varning!</entry>
+  <entry key="tab_display_view">Visningsvy</entry>
+  <entry key="tab_log_view">Logg</entry>
+  <entry key="tab_tree_view">Trädvy</entry>
+  <entry key="tab_tree_view_tab_modified">Modifierad</entry>
+  <entry key="tab_tree_view_tab_original">Original</entry>
+  <entry key="tab_xml_view">XMLvy</entry>  
+</properties>
