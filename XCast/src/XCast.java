@@ -106,6 +106,7 @@ import filters.XSLTImport;
  * 
  * <p>Resolved since 3.0:
  * 		<ol>
+ * 			<li>Treeview now scrolls to center of frame (actually, 1/3 from the top).</li>
  * 			<li>FM-import now outputs to a subdirectory.</li>
  * 			<li>Finding selected text or element i treeview.</li>
  * 			<li>FileChooser now returns to latest used directory 

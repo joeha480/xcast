@@ -5,8 +5,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
+import java.awt.Insets;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -97,11 +100,42 @@ public class XCTreeDisplay extends XCDisplay implements TreeExpansionListener {
 				TreePath tp = new TreePath(reversePath.toArray());
 				tree.setSelectionPath(tp);
 				tree.expandPath(tp);
-				tree.scrollPathToVisible(tp);	
+				tree.scrollPathToVisible(tp);
+				center(tree, tree.getPathBounds(tp), true);
 			}
 		} catch (Exception e) { e.printStackTrace(); }
 		tree.addTreeExpansionListener(this);
 	}
+	
+	private static void center(JComponent c, Rectangle r, boolean withInsets)
+	{
+	    Rectangle visible = c.getVisibleRect();
+
+	    visible.x = r.x - (visible.width - r.width) / 3;
+	    visible.y = r.y - (visible.height - r.height) / 3;
+
+	    Rectangle bounds = c.getBounds();
+	    Insets i = withInsets ? new Insets(0, 0, 0, 0) : c.getInsets();
+	    bounds.x = i.left;
+	    bounds.y = i.top;
+	    bounds.width -= i.left + i.right;
+	    bounds.height -= i.top + i.bottom;
+
+	    if (visible.x < bounds.x)
+	        visible.x = bounds.x;
+
+	    if (visible.x + visible.width > bounds.x + bounds.width)
+	        visible.x = bounds.x + bounds.width - visible.width;
+
+	    if (visible.y < bounds.y)
+	        visible.y = bounds.y;
+
+	    if (visible.y + visible.height > bounds.y + bounds.height)
+	        visible.y = bounds.y + bounds.height - visible.height;
+
+	    c.scrollRectToVisible(visible);
+	}
+
 	
 	public void setDocumentPosition(String elementName, int instanceNo) {
 		selectXPath("/descendant-or-self::"+elementName+'['+instanceNo+']');
