@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/XCast"/>
+	<classpathentry kind="src" path="/dmfc_mif"/>
+	<classpathentry kind="lib" path="C:/Program/eclipse/plugins/org.eclipse.swt.win32_3.0.1/ws/win32/swt.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
