@@ -20,7 +20,7 @@ public final class XCSettings extends XCProperties {
 	/** The version of the application */ 
 	public static final String APPLICATION_VERSION = "3.1";
 	/** The build */
-	public static final String APPLICATION_BUILD = "2005-10-13 13:28";
+	public static final String APPLICATION_BUILD = "2006-08-25 14:55";
 	/** File prefix to use when creating temporary files */ 
 	public static final String FILE_PREFIX = "XCDoc";
 	/** File postfix to use when creating temporary files */ 

@@ -2,6 +2,11 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -14,11 +19,14 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -114,6 +122,7 @@ import filters.XSLTImport;
  * 			<li>Items in xpath-result can be transformed to a rule selecting a single instance.</li>
  * 			<li>Validation error count added.</li>
  * 			<li>"Application" support</li>
+ * 			<li>Added copy to clipboard functionality</li>
  *		</ol>
  * </p>
  * 
@@ -192,6 +201,8 @@ public class XCast implements ActionListener, XCBridge {
 
 	// Layout components
     JButton openButton;
+    JButton openClipboard;
+    JButton copyToClipboard;
     JButton saveAsButton;
     JButton findButton;
     JTextField findThisText;
@@ -442,6 +453,8 @@ public class XCast implements ActionListener, XCBridge {
     	JPanel bp = new JPanel();
         jc = new JComboBox(getConfigList());
         openButton = new JButton(xcm.getProperty(XCMessages.MENU_FILE_ITEM_OPEN));
+        openClipboard = new JButton("Open clipboard");
+        copyToClipboard = new JButton("Copy to clipboard");
         saveAsButton = new JButton(xcm.getProperty(XCMessages.MENU_FILE_ITEM_SAVEAS));
         findButton = new JButton("Find text");
         findThisText = new JTextField(10);
@@ -455,6 +468,8 @@ public class XCast implements ActionListener, XCBridge {
         });
         jc.addActionListener(this);
         openButton.addActionListener(this);
+        openClipboard.addActionListener(this);
+        copyToClipboard.addActionListener(this);
         saveAsButton.addActionListener(this);
         findButton.addActionListener(this);
         bp.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -463,6 +478,8 @@ public class XCast implements ActionListener, XCBridge {
         bp.add(saveAsButton);
         bp.add(new JLabel("Sök text:"));
         bp.add(findThisText);
+        bp.add(openClipboard);
+        bp.add(copyToClipboard);
         //bp.add(findButton);
         return bp;
     }
@@ -633,6 +650,67 @@ public class XCast implements ActionListener, XCBridge {
     			worker.start();
     		}
     	}
+    	}
+    }
+    
+    /**
+     * Open the contents of the clipboard
+     */
+    public void performOpenClipboard() {
+    	if (!(documentOpen&&
+    			!(JOptionPane.OK_OPTION==JOptionPane.showConfirmDialog(frame, "Discard open document?", "Discard?", JOptionPane.OK_CANCEL_OPTION)))) {
+    		Clipboard cb = Toolkit.getDefaultToolkit().getSystemClipboard();
+    		File sf = null;
+    		try {
+    			String clip = cb.getData(DataFlavor.stringFlavor).toString();
+    			System.out.println(clip);
+    			sf = File.createTempFile("tmp", ".xml");
+    			PrintWriter os = new PrintWriter(sf, "UTF-8");
+    			os.print(clip);
+    			os.flush();
+    			os.close();
+    			closeOpenDocument();
+    			doc = new XCDocument(sf, settings);
+    			openDocument(doc);
+    		} catch (Exception e2) {
+		    	if (settings.getLoggingLevel()>=XCSettings.ERROR_LOGGING) 
+			    		XCUtils.handleError(e2, frame);
+    		}
+    		sf.delete();
+    	}
+    }
+    
+    public void performCopyToClipboard() {
+    	if (documentOpen) {
+    		try {
+    			  InputStreamReader is = new InputStreamReader(new FileInputStream(doc.getWorkingDocument()), "UTF-8");
+    			  int len = (int)doc.getWorkingDocument().length();
+    			  final char[] buf = new char[len];
+    			  is.read(buf, 0, len);
+    			  is.close();
+    			  Clipboard cb = Toolkit.getDefaultToolkit().getSystemClipboard();
+    			  cb.setContents(new Transferable(){
+
+					public DataFlavor[] getTransferDataFlavors() {
+						return new DataFlavor[]{DataFlavor.stringFlavor};
+					}
+
+					public boolean isDataFlavorSupported(DataFlavor flavor) {
+						if (flavor.equals(DataFlavor.stringFlavor)) {
+							return true;
+						}
+						return false;
+					}
+
+					public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
+						if (flavor.equals(DataFlavor.stringFlavor)) {
+							return new String(buf).replaceAll("<\\?.*\\?>", "");
+						}
+						else throw new UnsupportedFlavorException(flavor);
+					}
+    				  
+    			  }, null);
+    			} catch (Exception e) {e.printStackTrace(); }
     	}
     }
     
@@ -1066,6 +1144,8 @@ public class XCast implements ActionListener, XCBridge {
     	Object source = e.getSource();
     	//String className = XCLogic.getClassName(source);
     	if (source.equals(openButton)) { performOpenAction();
+    	} else if (source.equals(openClipboard)) { performOpenClipboard();
+    	} else if (source.equals(copyToClipboard)) { performCopyToClipboard();
     	} else if (source.equals(saveAsButton)) { performSaveAsAction();
     	} else if (source.equals(findButton)) {
     		openXPathBox("//text()[contains(., '"+ findThisText.getText() +"')]");
