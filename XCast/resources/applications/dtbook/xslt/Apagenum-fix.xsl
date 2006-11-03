@@ -4,16 +4,17 @@
 		<p>Tar bort tomma <b>p</b> samt <b>p</b> <br>
 		   runt <b>p</b> eller <b>pagenum</b>
 		</p>
+       <p>Tar bort <b>li</b> runt <b>pagenum</b>
 	</html>-->
 <!--
 		Joel Håkansson, TPB
-		Version 2005-09-13
+		Version 2006-06-19
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="xml" indent="no" encoding="UTF-8"/>
 	
 	<xsl:template match="/">
-	    <xsl:comment>Pagenum fix, version 2005-07-12 07:52</xsl:comment>
+	    <xsl:comment>Pagenum fix, version 2006-06-19 17:14</xsl:comment>
 		<xsl:apply-templates/>
 	</xsl:template>
 	
@@ -22,6 +23,13 @@
 						 (count(descendant::p)=      count(descendant::*)))]">
 		<xsl:apply-templates/>
 	</xsl:template>
+
+<!-- Nytt i version 060619 -->
+	<xsl:template match="li[count(text())=0 and 
+						((count(descendant::pagenum)=count(descendant::*)))]">
+		<xsl:apply-templates/>
+	</xsl:template>
+<!-- / Nytt i version 060619 -->
 	
 	<xsl:template match="*">
 		<xsl:call-template name="copy"/>

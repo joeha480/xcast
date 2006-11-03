@@ -1,70 +1,8 @@
 <html>
-<body>
-<h1>Innehåll</h1>
-<p><a href="#">Vad är XML-Cast?</a></p>
-<p><a href="#">Att använda XML-Cast</a></p>
-<p><a href="#">Vyer</a></p>
-<p><a href="#">Arkivmenyn</a></p>
-<p><a href="#">Redigeramenyn</a></p>
-<p><a href="#">Hjälpmenyn</a></p>
-
-<h1>Vad är XML-Cast?</h1>
-<p>XML-Cast är en interaktiv, tillståndslös XSLT-exekverare.</p>
-<p>Dess främsta funktion är att låta användaren döpa om alla förekomster av element med hjälp av en lista baserad på en dtd eller ett schema. Den lista som är förinstallerad är dtbook121, men andra listor kan användas.</p>
-<p>De namnbyten som användaren valt kompileras till ett XSLT som körs på användarens begäran. Därtill kan andra XSLTn köras, för att resultatet ska stämma bättre med önskat format.</p>
-<h1>Att använda XML-Cast</h1>
-<p>Programmet bygger på en prototyp som gjorts användbar på snabbast möjliga sätt. Detta innebär t.ex. att vissa funktioner tar lång tid att utföra och att programmet verkar då ha låst sig. I dessa lägen är det bäst att vänta och inte trycka på några tangenter.</p>
-<h2>Byta element</h2>
-<p>När ett dokument laddats in visas en samling knappar vars etiketter motsvarar elementnamn i dokumentet. Bredvid varje knapp finns en lista med möjliga utbytesnamn. Samtliga förekomster av elementet byter då till valt namn. Attribut och innehåll bevaras. Därtill finns ett par funktioner:</p>
-<ul>
-<li>bevara: Elementet lämnas oförändrat</li>
-<li>platta: Elementet tas bort och innehållet flyttas upp i hierarkin</li>
-<li>radera: Elementet tas bort och allt innehåll raderas</li>
-</ul>
-<h2>Applicera XSLT</h2>
-<p>När XML-filen har blivit så bra som den kan med hjälp av elementbyte, kan man välja att också applicera ett XSLT. Under XSLT-fliken finns ett antal XSLTn listade. Markera de XSLTn som ska köras med hjälp av musen och CTRL eller SHIFT. Valda XSLTn exekveras i alfabetisk ordning.</p>
-<h2>Ångra</h2>
-<p>Eftersom XML-Cast är tillståndslöst så finns ingen ångra-funktion. Programmet utgår alltid från den fil som skapades då dokumentet öppnades eller importerades. De åtgärder som användaren utför sparas till en annan fil, som aldrig används som input.</p>
-<p>Det här innebär att en inställning ångras genom att denna återställs till sitt ursprungliga värde.</p>
-<h1>Vyer</h1>
-<h2>Visningsläge</h2>
-<p>Visningsläget var tänkt att presentera innehållet på ett mera intuitivt sätt, men den komponenten används i denna version enbart för att visa hjälpfilen, eftersom den inte fungerar väl med stora filer (som hela böcker).</p>
-<h2>Trädvyn</h2>
-<p>I trädvyn finns två flikar, Modifierad och Original.</p>
-<p>Original visar en trädrepresentation av den fil som programmet utgår ifrån.</p>
-<p>Modifierad visar en trädrepresentation av resultatet.</p>
-<h2>Logg</h2>
-<p>Under loggfliken skrivs information till användaren eller utvecklaren. Om något går fel, så kan det vara värt att titta där. Röd text, betyder nästan alltid att något inte gick som det skulle. Tyvärr är användarvänlig felhantering inte överst på prioritetslistan.</p>
-<p>Innehållet i loggfliken har en högerklickmeny, som innehåller Markera allt, Kopiera och Töm.</p>
-<h1>Arkivmenyn</h1>
-<h2>Öppna (CTRL-O)</h2>
-<p>XML-Cast kan öppna och behandla välformade XML-filer och göra om dessa till XML-filer som har en annan nomenklatur och - i viss utsträckning - struktur. Det finns dock ett par undantag.</p>
-<h2>Importera</h2>
-<p>I nuvarande version finns två importfilter som båda behandlar FrameMaker-filer.</p>
-<h3>FrameMaker MIF</h3>
-<p>Detta filter importerar FrameMaker dokument sparade i MIF-format. Filtret importerar hela böcker om användaren väljer bok-filen (som också den ska vara i MIF-format). För att import av hela böcker ska lyckas så måste namngivningen på alla filer i boken vara enligt formen: [ursprungligt namn].mif</p>
-<p>Det här filtret är optimerat för DTBook, och innehåller översättningar till en del DTBook-specifika taggar som pagenum, note, noteref, dtbook, book, head och bodymatter. Därtill finns en del taggar som även används i t.ex. XHTML som table, td och tr. Övriga taggar har namngivits på samma sätt som omgivande stycke- eller teckenformat.</p>
-<h3>FrameMaker FM</h3>
-<p>Detta filter importerar FrameMaker dokument sparade i FM-format. Här väljer man först alla dokument som ska konverteras till MIF-format. Därefter anropar detta filter filtret ovan.</p>
-<p>Det här filtret arbetar under förutsättningen att FrameMaker finns installerat på datorn samt att plattformen är Windows.</p>
-<h2>Spara (CTRL-S)</h2>
-<p>Programmet utgår aldrig ifrån att ursprungsfilen ska skrivas över. Därför måste ett filnamn väljas första gången användaren sparar, oavsett om funktionen spara eller spara som använts.</p>
-<p>Efterföljande anrop till spara skriver över den fil som senast användes för att spara.</p>
-<h2>Spara som</h2>
-<p>Se spara</p>
-<h2>Avsluta (ALT-F4)</h2>
-<p>Avslutar programmet utan att fråga om ändringar ska sparas.</p>
-<h1>Redigeramenyn</h1>
-<h2>Konvertera (F5)</h2>
-<p>Utför de justeringar av filen som användaren begärt i Elementvyn och XSLTvyn.</p>
-<h2>Visa renderad (F9)</h2>
-<h2>Visa XML (F12)</h2>
-<h2>Inställningar</h2>
-<p>Menyalternativet är inte implementerat. Ett par inställningar finns sparade i filen settings.xml i XML-Cast katalogen.</p>
-<h1>Hjälpmenyn</h1>
-<h2>Innehåll (F1)</h2>
-<p>Visar hjälptexten.</p>
-<h2>Om XML-Cast</h2>
-<p>Visar version.</p>
+<body bgcolor="#b8cfe5">
+<center>
+<br><br><br>
+<a href="page1.html"><img src="images/logo_blue.jpg" border="0"></a>
+</center>
 </body>
 </html>

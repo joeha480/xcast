@@ -1,5 +1,22 @@
-
-<xsl:stylesheet version="1.0"
+<!--
+ * WordML2DTBook
+ * Copyright © 2006 The Swedish Library of Talking Books and Braille, TPB (www.tpb.se)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ -->
+ <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:w="http://schemas.microsoft.com/office/word/2003/wordml"
 	xmlns:v="urn:schemas-microsoft-com:vml"
@@ -15,7 +32,7 @@
 	xmlns="http://www.daisy.org/z3986/2005/dtbook/"
 	exclude-result-prefixes="w v w10 sl aml wx o dt st1 d meta">
 	
-<meta:doc xmlns:d="rnib.org.uk/tbs#">
+<meta:doc xmlns:meta="rnib.org.uk/tbs#">
 	<meta:revhistory>
 		<meta:purpose>
 			<meta:para>This stylesheet uses WordML to produce DTBook</meta:para>
@@ -52,10 +69,29 @@
 			</meta:revdescription>
 			<meta:revremark/>
 		</meta:revision>
+		<meta:revision>
+			<meta:revnumber>1.1.1</meta:revnumber>
+			<meta:date>28 December  2005</meta:date>
+			<meta:authorinitials>JoelH</meta:authorinitials>
+			<meta:revdescription>
+				<meta:para>Removed spaces in pagenum id's</meta:para>
+				<meta:para>Fixed a problem with smartTags</meta:para>
+			</meta:revdescription>
+			<meta:revremark/>
+		</meta:revision>
+		<meta:revision>
+			<meta:revnumber>1.1.11</meta:revnumber>
+			<meta:date>28 March  2006</meta:date>
+			<meta:authorinitials>JoelH</meta:authorinitials>
+			<meta:revdescription>
+				<meta:para>Fixed a problem with lists.</meta:para>
+			</meta:revdescription>
+			<meta:revremark/>
+		</meta:revision>
 	</meta:revhistory>
 </meta:doc>
   
-<d:tags>
+<d:mappings>
 	<d:standardWord d:version="4">
 		<d:paragraphs>
 			<d:tag d:name="heading 1" d:action="map" d:val="h1"/>
@@ -67,6 +103,7 @@
 			<d:tag d:name="footnote text" d:action="wrap" d:val="note" d:addId="true"/>
 			<!-- Indraget Stycke -->
 			<d:tag d:name="Block Text" d:action="wrap" d:val="blockquote" d:addId="false"/>
+			<d:tag d:name="Body Text Indent" d:action="wrap" d:val="blockquote" d:addId="false"/>
 			<!-- Kommentarer -->
 			<d:tag d:name="annotation text" d:action="comment"/>
 		</d:paragraphs>
@@ -87,7 +124,7 @@
 			<d:tag d:name="TPB-Sidnummer" d:action="pagenum"/>
 		</d:character>
 	</d:custom>
-</d:tags>
+</d:mappings>
 
 <xsl:output method="xml" indent="no" encoding="UTF-8" 
 	doctype-public="-//NISO//DTD dtbook 2005-1//EN"
@@ -164,7 +201,7 @@
 		<!-- <xsl:apply-templates select="w:r"/> -->
 		<xsl:apply-templates/>
 	</li>
-	<xsl:apply-templates select="following-sibling::node()[1]" mode="processList"/>
+	<xsl:apply-templates select="following-sibling::w:p[1]" mode="processList"/>
 </xsl:template>
 
 <!-- override the default rule for this mode, needed for the last call above -->
@@ -173,8 +210,8 @@
 <xsl:template match="w:p">
 	<!-- <xsl:variable name="style" select="key('matchStyle', w:pPr/w:pStyle/@w:val)"/> -->
 	<xsl:variable name="styleName" select="key('matchStyle', w:pPr/w:pStyle/@w:val)/w:name/@w:val"/>
-	<xsl:variable name="tag" select="($this//d:tags/d:custom[@d:style=$customStyle]|
-									  $this//d:tags/d:standardWord[@d:version=$tagSet])
+	<xsl:variable name="tag" select="($this//d:mappings/d:custom[@d:style=$customStyle]|
+									  $this//d:mappings/d:standardWord[@d:version=$tagSet])
 									  /d:paragraphs/d:tag[@d:name=$styleName]"/>
 	<xsl:choose>
 		<!-- found a matching action -->
@@ -182,7 +219,7 @@
 			<xsl:choose>
 				<xsl:when test="$tag/@d:action='map'">
 					<xsl:element name="{$tag/@d:val}">
-						<xsl:apply-templates select="w:r"/>
+						<xsl:apply-templates select="descendant::w:r"/>
 					</xsl:element>
 				</xsl:when>
 				<xsl:when test="$tag/@d:action='wrap'">
@@ -191,35 +228,24 @@
 							<xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
 						</xsl:if>
 						<p>
-							<xsl:apply-templates select="w:r"/>
+							<xsl:apply-templates select="descendant::w:r"/>
 						</p>
 					</xsl:element>
 				</xsl:when>
 				<xsl:when test="$tag/@d:action='comment'">
-					<xsl:comment><xsl:apply-templates select="w:r"/></xsl:comment>
+					<xsl:comment><xsl:apply-templates select="descendant::w:r"/></xsl:comment>
 				</xsl:when>
 			</xsl:choose>
 		</xsl:when>
 		<!-- no matching action found for this paragrap style -->
-		<xsl:otherwise><p><xsl:apply-templates select="w:r"/></p></xsl:otherwise>
+		<xsl:otherwise><p><xsl:apply-templates select="descendant::w:r"/></p></xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
-
-<!-- 
-<xsl:template match="w:r">
-	<xsl:choose>
-		<xsl:when test="w:rPr/w:rStyle/@w:val='Betoning'"><em><xsl:value-of select="."/></em></xsl:when>
-		<xsl:when test="w:rPr/w:rStyle/@w:val='Stark'"><strong><xsl:value-of select="."/></strong></xsl:when>
-		<xsl:when test="w:rPr/w:rStyle/@w:val='Sidnummer'"><pagenum id="p-{.}"><xsl:value-of select="."/></pagenum></xsl:when>
-		<xsl:otherwise><xsl:apply-templates/></xsl:otherwise>
-	</xsl:choose>
-</xsl:template>
--->
 
 <xsl:template match="w:r">
 	<xsl:variable name="styleName" select="key('matchStyle', w:rPr/w:rStyle/@w:val)/w:name/@w:val"/>
-	<xsl:variable name="tag" select="($this//d:tags/d:custom[@d:style=$customStyle]|
-									  $this//d:tags/d:standardWord[@d:version=$tagSet])
+	<xsl:variable name="tag" select="($this//d:mappings/d:custom[@d:style=$customStyle]|
+									  $this//d:mappings/d:standardWord[@d:version=$tagSet])
 									  /d:character/d:tag[@d:name=$styleName]"/>
 	<xsl:choose>
 		<!-- found a matching action -->
@@ -229,7 +255,7 @@
 					<xsl:element name="{$tag/@d:val}"><xsl:apply-templates/></xsl:element>
 				</xsl:when>
 				<xsl:when test="$tag/@d:action='pagenum'">
-					<pagenum id="p-{.}"><xsl:apply-templates/></pagenum>
+					<pagenum id="p-{translate(.,' ','')}"><xsl:apply-templates/></pagenum>
 				</xsl:when>
 				<xsl:when test="$tag/@d:action='noteref'">
 					<xsl:choose>
@@ -249,9 +275,9 @@
 
 <xsl:template match="w:pict">
   <xsl:if test="v:shape/v:imagedata">
-	  <imggroup>
-		  <img src="{v:shape/v:imagedata/@o:title}.jpg" alt=""/>
-	  </imggroup>
+		<imggroup>
+			<img src="{v:shape/v:imagedata/@o:title}.jpg" alt=""/>
+		</imggroup>
   </xsl:if>
 </xsl:template>
 
@@ -260,7 +286,7 @@
 </xsl:template>
 
 <xsl:template match="w:tab">
-  <xsl:text>&#x0009;</xsl:text>
+	<xsl:text>&#x0009;</xsl:text>
 </xsl:template>
 
 <xsl:template match="w:br">
@@ -288,6 +314,25 @@
 	</td>
 </xsl:template>
 
+<!-- Test med rowspan, ej färdigt -->
+<!-- 
+<xsl:template match="w:tc">
+	<xsl:if test="not(w:tcPr/w:vmerge) or w:tcPr/w:vmerge/@w:val">
+	<td>
+		<xsl:if test="w:tcPr/w:gridSpan">
+			<xsl:attribute name="colspan"><xsl:value-of select="w:tcPr/w:gridSpan/@w:val"/></xsl:attribute>
+		</xsl:if>
+		<xsl:if test="w:tcPr/w:vmerge/@w:val='restart'">
+			<xsl:variable name="val" select="count(preceding-sibling::w:tc)"/>
+			<xsl:variable name="id" select="generate-id(.)"/>
+			<xsl:variable name="te" select="ancestor::w:tbl/w:tr/w:tc[]"
+			<xsl:attribute name="rowspan"><xsl:value-of select="count(ancestor::w:tbl/w:tr/w:tc[$val][w:tcPr/w:vmerge and not(w:tcPr/w:vmerge/@w:val)])"/></xsl:attribute>
+		</xsl:if>
+		<xsl:apply-templates/>
+	</td>
+	</xsl:if>
+</xsl:template>
+-->
 <xsl:template match="w:footnote">
 	<noteref idref="note-{count(preceding::w:footnote[ancestor::w:body])+1}"><xsl:value-of select="count(preceding::w:footnote[ancestor::w:body])+1"/></noteref>
 </xsl:template>
@@ -301,17 +346,16 @@
 </xsl:template>
 
 <xsl:template match="*">
-  <!-- <xsl:apply-templates select="w:p"/> -->
-  <xsl:apply-templates/>
+	<xsl:apply-templates/>
 </xsl:template>
 
 <xsl:template name="copy">
-  <xsl:element name="{name()}">
-  	<xsl:for-each select="@*">
-  	  <xsl:attribute name="{name()}"><xsl:value-of select="."/></xsl:attribute>
-  	</xsl:for-each>
-  	<xsl:apply-templates/>
-  </xsl:element>
+	<xsl:element name="{name()}">
+		<xsl:for-each select="@*">
+			<xsl:attribute name="{name()}"><xsl:value-of select="."/></xsl:attribute>
+		</xsl:for-each>
+		<xsl:apply-templates/>
+	</xsl:element>
 </xsl:template>
 
 </xsl:stylesheet>
