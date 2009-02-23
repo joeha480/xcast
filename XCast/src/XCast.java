@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -19,7 +20,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -247,6 +247,7 @@ public class XCast implements ActionListener, XCBridge {
         frame = new JFrame(XCSettings.APPLICATION_NAME);
         // Om något går fel vid initieringen så kan man iaf stänga fönstret...
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	
 		settings = new XCSettings(SETTINGS_FILE);
 		plugsManager = new XCPlugInManager(this);
 		xcm = new XCMessages(settings.getLanguage());
@@ -263,7 +264,14 @@ public class XCast implements ActionListener, XCBridge {
         //Display the window.
 
         frame.setBounds(getCenteredBounds(0.9));
-
+    	File imageFile = new File(settings.getResources(), "icon.gif");
+    	byte[] b = new byte[(int)(imageFile).length()];
+		 try {
+		 FileInputStream fs = new FileInputStream(imageFile);
+		 fs.read(b);
+		 Image image = Toolkit.getDefaultToolkit().createImage(b);
+		 frame.setIconImage(image);
+		 } catch (Exception e) {}
         ToolTipManager ttm = ToolTipManager.sharedInstance();
         ttm.setDismissDelay(50000); //4000
         ttm.setInitialDelay(300); //750

@@ -13,7 +13,7 @@
    <entry key="plugins">plugins/</entry>
    <entry key="language">languages/swedish.xml</entry>
    <entry key="browser">c:/Program/Internet Explorer/iexplore.exe</entry>
-   <entry key="logging_detail">3</entry>
+   <entry key="logging_detail">5</entry>
    <entry key="editor"/>
    <entry key="scroll">20</entry>
 </properties>

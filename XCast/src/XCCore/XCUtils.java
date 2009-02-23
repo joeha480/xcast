@@ -193,6 +193,18 @@ public class XCUtils {
 		out.println("</xsl:template>");
 	}
 	
+	private static String attrExp(String attribs) {
+		String[] attrs = attribs.trim().split("=\"\\S*\"\\s*");
+		String ret = "";
+		int i = 1;
+		for (String s : attrs) {
+			ret += "name()=\"" + s + "\"";
+			if (i<attrs.length) ret += " or ";
+			i++;
+		}
+		return ret.trim();
+	}
+	
 	public static void printStyleSheet(Properties props, PrintStream out) {
 		out.println("<xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>");
 		out.println("<xsl:output method='xml' indent='no' encoding='UTF-8'/>");
@@ -219,7 +231,7 @@ public class XCUtils {
 					out.println("<!-- Lägg till attribut "+attribs+" -->");
 					out.println("<xsl:template match='"+key+condition+"'>");
 					out.println("	<" + key + ' ' + attribs + '>');
-					out.println("		<xsl:copy-of select='@*'/>");
+					out.println("		<xsl:copy-of select='@*[not(" + attrExp(attribs) + ")]'/>");
 					out.println("		<xsl:apply-templates/>");
 					out.println("	</"+key+">");
 					out.println("</xsl:template>");					
@@ -253,7 +265,8 @@ public class XCUtils {
 				if (!attribs.equals("")) out.print(" " + attribs);
 				out.println(">");
 				
-				out.println("		<xsl:copy-of select='@*'/>");
+				//out.println("		<xsl:copy-of select='@*'/>");
+				out.println("		<xsl:copy-of select='@*[not(" + attrExp(attribs) + ")]'/>");
 				out.println("		<xsl:apply-templates/>");
 				out.println("	</"+value+">");
 				//out.println("	</xsl:element>");
