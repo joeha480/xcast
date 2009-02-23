@@ -2,7 +2,7 @@
 <!--
 *
 * MIFXML to DTBook-NSFP
-* Version 2007-03-05
+* Version 2007-03-28
 * (Baserad på MIFXML to XHTML version 2005-03-31 14:36)
 * Joel Håkansson, TPB
 *
@@ -54,6 +54,9 @@
 * Ändringar i version 2007-03-05
 * prefix för pagenum ändrat till "page-[nr]"
 * En- och Em-hyphen konverteras nu ut som 0x2013 och 0x2014 (förut " - ")
+*
+* Ändringar i version 2007-03-28
+* Dagger och double dagger konverteras nu ut som 0x2020 och 0x2021 (förut "")
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="xml" indent="no" encoding="UTF-8"/>
@@ -651,8 +654,8 @@ EmDash, Dagger, DoubleDagger, Bullet, HardReturn, NumberSpace, ThinSpace, EnSpac
      <xsl:when test="@attr1='Yen'"><xsl:value-of select="'&#x00A5;'"/></xsl:when>
      <xsl:when test="@attr1='EnDash'"><xsl:value-of select="'&#x2013;'"/></xsl:when>
      <xsl:when test="@attr1='EmDash'"><xsl:value-of select="'&#x2014;'"/></xsl:when>
-     <xsl:when test="@attr1='Dagger'"/>
-     <xsl:when test="@attr1='DoubleDagger'"/>
+     <xsl:when test="@attr1='Dagger'"><xsl:value-of select="'&#x2020;'"/></xsl:when>
+     <xsl:when test="@attr1='DoubleDagger'"><xsl:value-of select="'&#x2021;'"/></xsl:when>
      <xsl:when test="@attr1='Bullet'"><xsl:value-of select="'&#x2022;'"/></xsl:when>
      <xsl:when test="@attr1='HardReturn'"><br></br></xsl:when>
      <xsl:when test="@attr1='NumberSpace' or @attr1='ThinSpace' or @attr1='EnSpace' or @attr1='EmSpace'">
